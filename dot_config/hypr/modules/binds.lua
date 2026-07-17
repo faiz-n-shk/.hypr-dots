@@ -47,25 +47,14 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 
 ----------------------------
----- SYSTEM KEYBINDINGS ----
+---- TOOLS KEYBINDINGS ----
 ----------------------------
-
---
-hl.bind(shiftMod .. " + X", hl.dsp.exec_cmd("wlogout"))
-
--- Logout/Open Login screen fallback
-hl.bind(shiftMod .. " + M", hl.dsp.exec_cmd("loginctl kill-session $XDG_SESSION_ID"))
 
 -- Open clipboard menu
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(clipboard))
 
 -- Quick Menu
 hl.bind(shiftMod .. " + P", hl.dsp.exec_cmd(quickMenu))
-
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-
--- Reload waybar config
-hl.bind(shiftMod .. " + R", hl.dsp.exec_cmd(waybarReload))
 
 -- Alt+Tab (standard MRU)
 hl.bind("ALT + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod alt"))
@@ -76,18 +65,34 @@ hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("snappy-switcher next --workspace -
 -- Screenshot
 hl.bind(shiftMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
 
+----------------------------
+---- SYSTEM KEYBINDINGS ----
+----------------------------
+
+-- Wlogout Menu
+hl.bind(shiftMod .. " + X", hl.dsp.exec_cmd("wlogout"))
+
+-- Logout/Open Login screen fallback
+hl.bind(shiftMod .. " + M", hl.dsp.exec_cmd("loginctl kill-session $XDG_SESSION_ID"))
+
+-- Window pseudo
+hl.bind(shiftMod .. " + O + P", hl.dsp.window.pseudo())
+
+-- Toggle Window Float
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+
+-- Reload waybar config
+hl.bind(shiftMod .. " + R", hl.dsp.exec_cmd(waybarReload))
+
 --Toggle battery charge_type (Conservation/Full Charge)
 hl.bind(shiftMod .. " + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_battery"))
 
 --Display Monitor Menu
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/monitor_menu"))
 
--- Window pseudo
-hl.bind(shiftMod .. " + O + P", hl.dsp.window.pseudo())
-
-----------------------------
----- Window KEYBINDINGS ----
-----------------------------
+-------------------------------
+---- WORKSPACE KEYBINDINGS ----
+-------------------------------
 
 -- Close open window
 hl.bind(shiftMod .. " + Q", hl.dsp.window.close())
@@ -157,16 +162,20 @@ hl.bind(
 )
 
 -- Monitor Brightness (+)
+
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
+
 -- Monitor Brightness (-)
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
--- The below Multimedia keybinds require playerctl to function
 -- Multimedia Play
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+
 -- Multimedia Pause
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+
 -- Multimedia Previous
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
 -- Multimedia Next
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })

@@ -11,6 +11,13 @@ hl.config({
 	},
 })
 
+-- Enable tearing master switch inside the general table
+hl.config({
+	general = {
+		allow_tearing = true,
+	},
+})
+
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
 	scrolling = {

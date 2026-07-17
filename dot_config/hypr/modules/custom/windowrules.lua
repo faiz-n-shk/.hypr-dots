@@ -16,17 +16,11 @@ hl.layer_rule({
 	ignore_alpha = 0.5,
 })
 
+-- Sea Of Theives Steam steam_app_1172620
 -- Target Sea of Thieves to use immediate rendering (tearing) to unlock FPS
 hl.window_rule({
 	match = {
 		class = "^steam_app_1172620$",
 	},
 	immediate = true,
-})
-
--- Enable tearing master switch inside the general table
-hl.config({
-	general = {
-		allow_tearing = true,
-	},
 })
