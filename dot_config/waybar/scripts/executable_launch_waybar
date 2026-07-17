@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pkill -SIGUSR2 waybar
+pkill -SIGUSR2 swaync
+
+swaync-client -R && swaync-client -rs

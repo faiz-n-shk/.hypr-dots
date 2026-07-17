@@ -1,0 +1,33 @@
+hl.config({
+	dwindle = {
+		preserve_split = true, -- You probably want this
+	},
+})
+
+-- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
+hl.config({
+	master = {
+		new_status = "master",
+	},
+})
+
+-- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
+hl.config({
+	scrolling = {
+		fullscreen_on_one_column = true,
+	},
+})
+
+hl.config({
+	-- Core XWayland rules to ensure proper background communication
+	xwayland = {
+		enabled = true,
+		force_zero_scaling = true,
+	},
+
+	-- This block controls compositor-level input passing to unmapped X11 windows
+	render = {
+		-- Set to false if it exists, as explicit sync can sometimes drop background hooks on older drivers
+		-- explicit_sync = false,
+	},
+})

@@ -1,0 +1,22 @@
+-- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
+
+-- See https://wiki.hypr.land/Configuring/Basics/Autostart/
+
+-- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+
+-- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
+
+-- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
+
+-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+
+-- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+
+--See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
+
+-- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
+-- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/

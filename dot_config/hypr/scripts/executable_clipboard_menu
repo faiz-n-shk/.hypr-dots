@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# File paths
+THEME_FILE="~/.config/hypr/themes/clipboard_menu.rasi"
+
+# Custom action buttons
+KEY_COPY="Alt+c"
+KEY_DELETE="Alt+d"
+
+while true; do
+  selection=$(
+    cliphist list | rofi \
+      -dmenu \
+      -p "📋 Clipboard" \
+      -mesg " [Enter] Paste Directly  |  [$KEY_COPY] Copy Only  |  [$KEY_DELETE] Delete Item" \
+      -theme "$THEME_FILE" \
+      -kb-custom-1 "$KEY_COPY" \
+      -kb-custom-2 "$KEY_DELETE"
+  )
+
+  status=$?
+
+  if [ "$status" -eq 1 ] || [ "$status" -gt 11 ] || [ -z "$selection" ]; then
+    exit 0
+  fi
+
+  case "$status" in
+  0) # [Enter] Key: Wayland-Native Paste Injection
+    # 1. Decode text snippet to clipboard selection buffers
+    echo "$selection" | cliphist decode | wl-copy
+
+    # 2. Tell Hyprland to focus back on the underlying window active area
+    hyprctl dispatch focuswindow active
+
+    # 3. Micro-sleep adjustment ensures focus handoff completes safely
+    sleep 0.1
+
+    # 4. Use wtype with clear modifiers to force the injection event
+    if command -v wtype &>/dev/null; then
+      wtype -M ctrl v
+    else
+      # Clean fallback using native Hyprland internal shortcut dispatcher
+      hyprctl dispatch sendshortcut "CTRL, v, activewindow"
+    fi
+    exit 0
+    ;;
+
+  10) # [Alt + c] Key: Instantly copy and close window
+    echo "$selection" | cliphist decode | wl-copy
+    exit 0
+    ;;
+
+  11) # [Alt + d] Key: Delete history item from database and keep menu open
+    echo "$selection" | cliphist delete
+    ;;
+  esac
+done

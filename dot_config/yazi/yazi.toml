@@ -1,0 +1,24 @@
+# ~/.config/yazi/yazi.toml
+
+[mgr]
+show_hidden = true
+
+[preview]
+previewer_type = "kitty"
+
+# Press Enter to open images using Kitty's icat
+[opener]
+image = [
+    { run = 'kitty +kitten icat "%1"', desc = "View Image" }
+]
+
+[open]
+prepend_rules = [
+    { url = "*.{mp3,flac,m4a,ogg,wav}", use = "image" }
+]
+ 
+# Render embedded music cover art in the preview panel.
+[plugin]
+prepend_previewers = [
+    { mime = "audio/*", run = "video" }
+]
