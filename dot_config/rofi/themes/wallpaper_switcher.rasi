@@ -1,12 +1,7 @@
+@import "colors-matugen.rasi"
+
 configuration {
     show-icons: true;
-}
-
-* {
-    background:                  #111215FF;
-    background-alt:              #1A1C23FF;
-    foreground:                  #E2E2E9FF;
-    selected:                    #4A5568FF;
 }
 
 window {

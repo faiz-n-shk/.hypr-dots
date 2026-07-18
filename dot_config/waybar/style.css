@@ -1,4 +1,4 @@
-@import "colors/custom/gruvbox-material.css";
+@import "colors/colors-matugen.css";
 
 window#waybar {
   background-color: transparent;

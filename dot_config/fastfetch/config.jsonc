@@ -1,18 +1,11 @@
 {
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "$schema": "https://github.com",
   "logo": {
     "type": "auto",
     "source": "arch",
     "color": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": ""
+      "1": "blue",
+      "2": "cyan"
     },
     "width": null,
     "height": null,
@@ -38,10 +31,10 @@
     "hideCursor": false,
     "separator": " ",
     "color": {
-      "keys": "white",
-      "title": "",
+      "keys": "cyan",
+      "title": "blue",
       "output": "white",
-      "separator": ""
+      "separator": "magenta"
     },
     "brightColor": true,
     "duration": {
@@ -90,7 +83,7 @@
         "rightElapsed": ""
       },
       "color": {
-        "elapsed": "auto",
+        "elapsed": "magenta",
         "total": "97",
         "border": "97"
       },
@@ -125,16 +118,15 @@
       "keyIcon": "",
       "fqdn": false,
       "color": {
-        "user": "yellow",
-        "at": "red",
-        "host": "yellow"
+        "user": "blue",
+        "at": "magenta",
+        "host": "blue"
       }
     },
     {
       "type": "separator",
-      "string": "-",
-      "outputColor": "",
-      "times": 0
+      "string": "—",
+      "outputColor": "magenta"
     },
     {
       "type": "os",
@@ -144,8 +136,8 @@
     },
     {
       "type": "host",
-      "key": "󰌢 ",
-      "keyIcon": "󰌢"
+      "key": "   ",
+      "keyIcon": "  "
     },
     {
       "type": "kernel",
@@ -160,7 +152,7 @@
     {
       "type": "packages",
       "key": " ",
-      "keyIcon": "󰏖",
+      "keyIcon": "  ",
       "disabled": [
         "winget"
       ],
@@ -174,7 +166,7 @@
     {
       "type": "display",
       "key": " ",
-      "keyIcon": "󰍹",
+      "keyIcon": "  ",
       "format": "{width}x{height} [{refresh-rate}Hz]",
       "compactType": "none",
       "preciseRefreshRate": false,
@@ -193,13 +185,13 @@
     },
     {
       "type": "wmtheme",
-      "key": "󰓸 ",
-      "keyIcon": "󰓸"
+      "key": "   ",
+      "keyIcon": "  "
     },
     {
       "type": "theme",
-      "key": "󰉼 ",
-      "keyIcon": "󰉼"
+      "key": "   ",
+      "keyIcon": "  "
     },
     {
       "type": "icons",
@@ -227,8 +219,8 @@
     },
     {
       "type": "gpu",
-      "key": "󰾲 ",
-      "keyIcon": "󰾲",
+      "key": "   ",
+      "keyIcon": "  ",
       "format": "{name}",
       "driverSpecific": false,
       "detectionMethod": "pci",
@@ -259,10 +251,7 @@
       "paddingLeft": 0,
       "block": {
         "width": 1,
-        "range": [
-          0,
-          7
-        ]
+        "range": [0, 7]
       }
     }
   ]

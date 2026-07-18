@@ -6,10 +6,12 @@ WAYPAPER_CONFIG="$HOME/.config/waypaper/config.ini"
 
 cd "$WALL_DIR" || exit 1
 
+# Cleanly parse current wallpaper
 CURRENT_WALL=$(grep "^wallpaper =" "$WAYPAPER_CONFIG" | cut -d'=' -f2- | tr -d '"'\'' ')
 CURRENT_WALL="${CURRENT_WALL/#\~/$HOME}"
 CURRENT_FILE=$(basename "$CURRENT_WALL")
 
+# Fix for confusion between awww and swww bruh
 if pgrep -x "awww-daemon" >/dev/null; then
   CMD="awww"
 elif pgrep -x "swww-daemon" >/dev/null; then
@@ -25,6 +27,7 @@ else
   sleep 0.5
 fi
 
+# Array list
 ROW_INDEX=0
 CURRENT_ROW=0
 WALL_LIST=""
@@ -41,20 +44,16 @@ while read -r file; do
   ((ROW_INDEX++))
 done < <(find . -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \) -printf "%P\n" | sort)
 
+# Open Rofi pre-focused on current applied wallpaper index row
 SELECTED_WALL=$(echo -en "$WALL_LIST" | rofi -dmenu -show-icons -selected-row "$CURRENT_ROW" -theme "$THEME" -p "  ")
 
+# Exit if selection cancelled
 [ -z "$SELECTED_WALL" ] && exit 0
 
-TRANSITIONS=("wipe" "wave" "grow" "outer" "center" "left" "right" "top" "bottom")
-RANDOM_TRANSITION=${TRANSITIONS[$RANDOM % ${#TRANSITIONS[@]}]}
+# Update config file
+sed -i "s|^wallpaper =.*|wallpaper = ${WALL_DIR}/${SELECTED_WALL}|" "$WAYPAPER_CONFIG"
 
-"$CMD" img "$WALL_DIR/$SELECTED_WALL" \
-  --transition-type "$RANDOM_TRANSITION" \
-  --transition-step 90 \
-  --transition-fps 60 \
-  --transition-angle 30 \
-  --transition-duration 1.5
-
-sed -i "s|^wallpaper =.*|wallpaper = $WALL_DIR/$SELECTED_WALL|" "$WAYPAPER_CONFIG"
+# Execute the matugen update_theme script
+~/.config/hypr/scripts/update_theme "$WALL_DIR/$SELECTED_WALL" &
 
 exit 0

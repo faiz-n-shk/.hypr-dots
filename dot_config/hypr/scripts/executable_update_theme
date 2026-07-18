@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+WALLPAPER="$1"
+if [ -z "$WALLPAPER" ]; then
+  echo "Error: No wallpaper path provided."
+  exit 1
+fi
+
+# Update the wallpaper
+if pgrep -x "awww-daemon" >/dev/null; then
+  awww img "$WALLPAPER" --transition-type "grow" --transition-duration 1.0
+elif pgrep -x "swww-daemon" >/dev/null; then
+  swww img "$WALLPAPER" --transition-type "grow" --transition-duration 1.0
+fi
+
+# Run Matugen
+matugen image "$WALLPAPER" --mode dark --source-color-index 0
+
+# Reload kitty
+if pgrep -x "kitty" >/dev/null; then
+  kill -SIGUSR1 $(pgrep -x kitty)
+fi
+
+# Reload Waybar
+if pgrep -x "waybar" >/dev/null; then
+  kill -SIGUSR2 $(pgrep -x waybar)
+fi
+
+exit 0

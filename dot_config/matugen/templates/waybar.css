@@ -1,0 +1,5 @@
+/* Material You Colors generated dynamically by Matugen */
+@define-color fg {{colors.on_surface.default.hex}};
+@define-color bg0 {{colors.surface.default.hex}};
+@define-color bg4 {{colors.surface_container_high.default.hex}};
+@define-color blue {{colors.primary.default.hex}};
