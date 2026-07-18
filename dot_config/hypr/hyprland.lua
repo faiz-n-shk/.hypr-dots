@@ -1,6 +1,10 @@
 -- Refer to the wiki for more information.
 -- https://wiki.hypr.land/Configuring/Start/
 
+-- Colors
+
+-- local colors = require("colors.colors-matugen")
+
 -- Main Modules
 require("modules.autostart")
 require("modules.binds")

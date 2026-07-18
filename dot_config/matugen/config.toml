@@ -14,5 +14,9 @@ input_path = '~/.config/matugen/templates/waybar.css'
 output_path = '~/.config/waybar/colors/colors-matugen.css'
 
 [templates.swaync]
-input_path = "/home/faizan/.config/matugen/templates/swaync.css"
-output_path = "/home/faizan/.config/swaync/colors-matugen.css"
+input_path = "~/.config/matugen/templates/swaync.css"
+output_path = "~/.config/swaync/colors-matugen.css"
+
+[templates.hypr]
+input_path = "~/.config/matugen/templates/hyprland.lua"
+output_path = "~/.config/hypr/colors/colors-matugen.lua"

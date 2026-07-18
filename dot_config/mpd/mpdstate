@@ -2,8 +2,8 @@ sw_volume: 30
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:HTTP Stream
 state: pause
-current: 4
-time: 87.20700000000001
+current: 5
+time: 97.152
 random: 1
 repeat: 1
 single: 0
@@ -27,4 +27,33 @@ playlist_begin
 11:High-Res/03 - Ado - Aishite Aishite Aishite.flac
 12:High-Res/08 - Ado - unravel.flac
 13:High-Res/11 - Ado - Usseewa.flac
+14:Spotify/Dynamic Fav/I Don't Wanna Go.mp3
+15:Spotify/Dynamic Fav/On My Way.mp3
+16:Spotify/Dynamic Fav/Lost Control.mp3
+17:Spotify/Dynamic Fav/Middle of the night.mp3
+18:Spotify/Dynamic Fav/Applause.mp3
+19:Spotify/Dynamic Fav/Water - King Kavalier Remix.mp3
+20:Spotify/Dynamic Fav/METAMORPHOSIS.mp3
+21:Spotify/Dynamic Fav/Gurenge 紅蓮華.mp3
+22:Spotify/Dynamic Fav/Gurenge Remix.mp3
+23:Spotify/Dynamic Fav/Can You Hear The Music.mp3
+24:Spotify/Dynamic Fav/Tired of Talking.mp3
+25:Spotify/Dynamic Fav/Inferno インフェルノ.mp3
+26:Spotify/Dynamic Fav/As the World Caves In.mp3
+27:Spotify/Dynamic Fav/Thunderclouds.mp3
+28:Spotify/Dynamic Fav/Young Girl A.mp3
+29:Spotify/Dynamic Fav/Akari 燈.mp3
+30:Spotify/Dynamic Fav/GTR.mp3
+31:Spotify/Dynamic Fav/Grandeur.mp3
+32:Spotify/Dynamic Fav/Ao no Sumika 青のすみか.mp3
+33:Spotify/Dynamic Fav/Kyouran Hey Kids!!.mp3
+34:Spotify/Dynamic Fav/Ticking.mp3
+35:Spotify/Dynamic Fav/Unravel.mp3
+36:Spotify/Dynamic Fav/Of Solitude Past and Present.mp3
+37:Spotify/Dynamic Fav/Emotional Crank.mp3
+38:Spotify/Dynamic Fav/Greater than one.mp3
+39:Spotify/Dynamic Fav/Black Catcher.mp3
+40:Spotify/Dynamic Fav/Memory Reboot.mp3
+41:Spotify/Dynamic Fav/Entertain Me.mp3
+42:Spotify/Dynamic Fav/Entertain Me (with 220 KID) - Remix.mp3
 playlist_end

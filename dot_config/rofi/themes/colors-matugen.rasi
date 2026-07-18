@@ -1,9 +1,9 @@
 * {
-    background:          #13140c;
-    background-tint:     #454a0380;
-    background-alt:      #2a2a22;
-    foreground:          #e5e3d6;
-    selected:            #454a03;
-    search-tint:         #e5e3d650;
-    hover-tint:          #e5e3d650;
+    background:          #121318;
+    background-tint:     #30457880;
+    background-alt:      #292a2f;
+    foreground:          #e3e2e9;
+    selected:            #304578;
+    search-tint:         #e3e2e950;
+    hover-tint:          #e3e2e950;
 }

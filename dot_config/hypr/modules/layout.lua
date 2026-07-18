@@ -1,3 +1,6 @@
+-- Colors
+local colors = require("colors.colors-matugen")
+
 hl.config({
 	general = {
 		gaps_in = 3,
@@ -6,8 +9,8 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			active_border = { colors = { colors.primary, colors.secondary }, angle = 45 },
+			inactive_border = colors.inactive,
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps

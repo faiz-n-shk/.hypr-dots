@@ -21,22 +21,27 @@ window#waybar {
 
 #pulseaudio {
   margin-right: 15px;
+  color: @blue; 
 }
 
 #backlight {
   margin-right: 15px;
+  color: @blue;
 }
 
 #tray {
   animation: none;
   margin-right: 15px;
+  color: @blue;
 }
 .modules-left {
   margin-left: 12px;
+  color: @blue;
 }
 
 .modules-right {
   margin-right: 12px;
+  color: @blue;
 }
 
 window#waybar.HDMI-A-1 #workspaces {
@@ -63,6 +68,10 @@ window#waybar.HDMI-A-1 #workspaces button.active {
   transition: none;
 }
 
+window#waybar.eDP-1 #workspaces button {
+  color: @blue;
+}
+
 window#waybar.eDP-1 #workspaces button.active {
   background-color: @bg4;
   transition: none;
@@ -73,5 +82,6 @@ window#waybar.eDP-1 #workspaces button.active {
   margin: 0 15px;
   font-weight: 700;
   font-size: 1.12rem;
+  color: @blue;
 }
 
