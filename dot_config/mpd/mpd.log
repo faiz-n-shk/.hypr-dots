@@ -287,3 +287,18 @@
 2026-07-17T06:56:53 player: played "High-Res/00 - Ado - Ashura-chan.flac"
 2026-07-17T19:06:30 player: played "High-Res/00 - Ado - Ashura-chan.flac"
 2026-07-17T19:36:10 player: played "High-Res/00 - Ado - Ashura-chan.flac"
+2026-07-18T00:50:49 player: played "High-Res/00 - Ado - Ashura-chan.flac"
+2026-07-18T00:54:03 player: played "High-Res/01 - Ado - Odoru Ponpokorin.flac"
+2026-07-18T00:56:32 player: played "High-Res/02 - Ado - Kazarijyanainoyonamidawa.flac"
+2026-07-18T00:57:10 output: Failed to play on "PipeWire Sound Server" (pipewire): no target node available
+2026-07-18T00:57:37 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2026-07-18T00:58:37 player: played "High-Res/02 - Ado - Kazarijyanainoyonamidawa.flac"
+2026-07-18T00:59:17 output: Failed to play on "PipeWire Sound Server" (pipewire): no target node available
+2026-07-18T01:00:14 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2026-07-18T01:03:00 player: played "High-Res/11 - Ado - Usseewa.flac"
+2026-07-18T01:03:18 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2026-07-18T01:05:38 player: played "High-Res/03 - Ado - Aishite Aishite Aishite.flac"
+2026-07-18T01:22:28 player: played "High-Res/03 - Ado - Aishite Aishite Aishite.flac"
+2026-07-18T01:25:28 player: played "High-Res/03 - Ado - Aishite Aishite Aishite.flac"
+2026-07-18T01:27:47 player: played "High-Res/03 - Ado - Aishite Aishite Aishite.flac"
+2026-07-18T01:28:44 player: played "High-Res/03 - Ado - Aishite Aishite Aishite.flac"

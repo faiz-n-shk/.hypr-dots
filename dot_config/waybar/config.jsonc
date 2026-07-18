@@ -1,44 +1,67 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "middle", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-   // "height": 30, // Waybar height (to be removed for auto height)
-    "width": 1280, // Waybar width
+    "layer": "middle",
+    "position": "top",
     "margin-top": 5,
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "spacing": 4,
+
+  // Modules
+
     "modules-left": [
-    "pulseaudio"
-        
+    "group/left-pill"
     ],
     "modules-center": [
     "clock",
     "hyprland/workspaces",
     "custom/separatordot",
     "clock#right"
-    
   ],
     "modules-right": [
-
-        "battery",
-           "tray",
-    "custom/notification"
+    "custom/network",
+    "battery",
+    "group/right-pill"
     ],
 
-
-    // Modules configuration
-    "custom/separatordot": {
-        "format": "•",
-        "tooltip": false
-    },
-
+  // Modules configuration
+  "custom/separatordot": {
+    "format": "•",
+    "tooltip": false
+},
+  "group/left-pill": {
+    "orientation": "horizontal",
+    "modules": [
+        "pulseaudio",
+        "backlight",
+        "hyprland/window"
+    ]
+},
+  "group/right-pill": {
+    "orientation": "horizontal",
+    "modules": [
+        "tray",
+        "custom/notification"
+    ]
+  },
+  "hyprland/window": {
+    "format": "{class}",
+    "separate-outputs": true
+},
+  "backlight": {
+  	"device": "intel_backlight",
+	  "format": "{percent}% {icon}",
+	  "format-icons": ["󰃛", "󰃜", "󰃞 ", "󰃝 ", "󰃟 ", "󰃠 "]
+},
+  "custom/network": {
+    "exec": "nmcli -t -f TYPE,NAME,DEVICE connection show --active | awk -F: '$1==\"802-11-wireless\"{printf \"<span rise=\\\"1000\\\">\\uF0928</span> %s\\n\", $2; exit} $1==\"802-3-ethernet\"{printf \"<span rise=\\\"100\\\">\\uF0200</span> %s\\n\", $2; exit}'; [[ ${PIPESTATUS} -eq 0 ]] || echo '<span rise=\\\"1500\\\">\\uF092D</span> Disconnected'",
+    "interval": 5,
+    "format": "{}",
+    "tooltip": false
+},
 "pulseaudio": {
     "format": "{volume}% {icon}",
     "format-bluetooth": "{volume}% {icon}",
     "format-muted": "󰝟",
     "format-icons": {
-       // "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-       // "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
         "headphone": "",
         "hands-free": "",
         "headset": "",
@@ -58,41 +81,31 @@
   "clock#right":{
     "format": "{:%a, %d/%m/%y}"
   },
-
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": false,
-        "warp-on-scroll": false,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "一",
-            "2": "二",
-            "3": "三",
-            "4": "四",
-            "5": "五",
-
-            // Laptop Monitor
-            "6": "六",
-            "7": "七",
-            "8": "八",
-            "9": "九",
-            "10": "什",
-
-        }
-  },
-
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+  // Waybar at top layer
+  "all-outputs": false,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "10": "什",
+    }
+},
 	"tray": {
 		"icon-size": 16,
-		// "show-passive-items":
-		// "smooth-scrolling-threshold":
 		"spacing": 12,
-		// "reverse-direction":
-		// "on-update":
-		// "expand":
-  	// "icons":
 		"cursor": true
-	},
-"battery": {
+},
+  "battery": {
     "bat": "BAT1",
     "interval": "10",
     "format": "{capacity}% {icon}",
@@ -101,8 +114,7 @@
         "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
     }
 },
-
-    "custom/notification": {
+  "custom/notification": {
     "tooltip": false,
     "format": "{} {icon}",
     "format-icons": {
@@ -121,7 +133,8 @@
     "on-click": "sleep 0.1 && swaync-client -t -sw",
     "on-click-right": "sleep 0.1 && swaync-client -d -sw",
     "escape": true
+  }
 }
 
-}
+
 

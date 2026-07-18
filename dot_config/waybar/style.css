@@ -1,23 +1,42 @@
 @import "colors/custom/gruvbox-material.css";
 
-#tray {
-    padding: 0 10px;
-    margin: 0 4px;
-}
-
-#tray > * {
-    padding: 0 6px;
-    margin: 0 2px;
-}
-
-#tray > image {
-    animation: none; /* Prevents icons from disappearing on reload */
-}
-
 window#waybar {
-  background-color: @bg0;
+  background-color: transparent;
   color: @fg;
-  border-radius: 10px 10px 10px 10px;
+}
+
+#left-pill,
+.modules-center,
+#custom-network,
+#battery,
+#right-pill {
+  background-color: @bg0;
+  border-radius: 20px;
+  padding: 2px 14px;
+  margin-top: 6px;
+  margin-bottom: 1px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+#pulseaudio {
+  margin-right: 15px;
+}
+
+#backlight {
+  margin-right: 15px;
+}
+
+#tray {
+  animation: none;
+  margin-right: 15px;
+}
+.modules-left {
+  margin-left: 12px;
+}
+
+.modules-right {
+  margin-right: 12px;
 }
 
 window#waybar.HDMI-A-1 #workspaces {
@@ -56,10 +75,3 @@ window#waybar.eDP-1 #workspaces button.active {
   font-size: 1.12rem;
 }
 
-.modules-left {
-  margin-left: 12px;
-}
-
-.modules-right {
-  margin-right: 12px;
-}

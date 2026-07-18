@@ -17,7 +17,6 @@ hl.on("hyprland.start", function()
 
 	-- Mpd Services and Daemon
 	hl.exec_cmd("systemctl --user start mpd")
-	hl.exec_cmd("systemctl --user start mpd-mpris")
 
 	-- Start hyprpm plugins
 	hl.exec_cmd("hyprpm reload -n")
