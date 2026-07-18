@@ -26,4 +26,9 @@ if pgrep -x "waybar" >/dev/null; then
   kill -SIGUSR2 $(pgrep -x waybar)
 fi
 
+# Reload Swaync
+if command -v swaync-client &>/dev/null; then
+  swaync-client -rs
+fi
+
 exit 0

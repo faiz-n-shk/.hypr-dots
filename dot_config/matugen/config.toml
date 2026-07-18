@@ -12,3 +12,7 @@ output_path = '~/.config/rofi/themes/colors-matugen.rasi'
 [templates.waybar]
 input_path = '~/.config/matugen/templates/waybar.css'
 output_path = '~/.config/waybar/colors/colors-matugen.css'
+
+[templates.swaync]
+input_path = "/home/faizan/.config/matugen/templates/swaync.css"
+output_path = "/home/faizan/.config/swaync/colors-matugen.css"
