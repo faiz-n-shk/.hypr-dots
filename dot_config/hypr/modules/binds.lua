@@ -8,7 +8,6 @@ local fileManager = "nemo"
 local fileManager2 = "kitty -e yazi -- --show-hidden"
 local menu = "rofi -show drun"
 local browser = "zen-browser"
-local wallpaper = "waypaper"
 
 -- Set Mod shortcuts
 local mainMod = "SUPER"
@@ -21,6 +20,7 @@ local shiftMod = "SUPER + SHIFT"
 local clipboard = "~/.config/hypr/scripts/clipboard_menu"
 local quickMenu = "~/.config/hypr/scripts/quick_menu"
 local waybarReload = "~/.config/waybar/scripts/launch_waybar"
+local wallpaper = "~/.config/hypr/scripts/wallpaper_switcher"
 
 ---------------------------------
 ---- APPLICATION KEYBINDINGS ----

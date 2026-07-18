@@ -1,0 +1,103 @@
+configuration {
+    show-icons: true;
+}
+
+* {
+    background:                  #111215FF;
+    background-alt:              #1A1C23FF;
+    foreground:                  #E2E2E9FF;
+    selected:                    #4A5568FF;
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       950px;
+    height:                      620px;
+    border:                      2px solid;
+    border-radius:               12px;
+    border-color:                @selected;
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     20px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     10px;
+    border-radius:               6px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    placeholder:                 "Search wallpapers...";
+    placeholder-color:           inherit;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       2;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     20px;
+    background-color:            transparent;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     6px;
+    padding:                     12px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    orientation:                 vertical;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @foreground;
+}
+
+element-icon {
+    background-color:            transparent;
+    size:                        180px;
+    horizontal-align:            0.5;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    font:                        "Sans 9";
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}

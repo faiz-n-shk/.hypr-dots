@@ -9,6 +9,15 @@ hl.window_rule({
 	pin = true,
 })
 
+hl.window_rule({
+	match = {
+		class = "^(discord)$",
+	},
+	opacity = 1.0,
+	no_dim = true,
+	no_blur = true,
+	opaque = true,
+})
 -- Force regex match on any layer surface starting with swaync
 hl.layer_rule({
 	match = { namespace = "^swaync-.*" },

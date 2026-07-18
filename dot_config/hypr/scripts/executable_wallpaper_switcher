@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+WALL_DIR="$HOME/Pictures/Wallpapers"
+THEME="$HOME/.config/rofi/themes/wallpaper_switcher.rasi"
+WAYPAPER_CONFIG="$HOME/.config/waypaper/config.ini"
+
+cd "$WALL_DIR" || exit 1
+
+CURRENT_WALL=$(grep "^wallpaper =" "$WAYPAPER_CONFIG" | cut -d'=' -f2- | tr -d '"'\'' ')
+CURRENT_WALL="${CURRENT_WALL/#\~/$HOME}"
+CURRENT_FILE=$(basename "$CURRENT_WALL")
+
+if pgrep -x "awww-daemon" >/dev/null; then
+  CMD="awww"
+elif pgrep -x "swww-daemon" >/dev/null; then
+  CMD="swww"
+else
+  if command -v awww-daemon &>/dev/null; then
+    awww-daemon &
+    CMD="awww"
+  else
+    swww-daemon &
+    CMD="swww"
+  fi
+  sleep 0.5
+fi
+
+ROW_INDEX=0
+CURRENT_ROW=0
+WALL_LIST=""
+
+while read -r file; do
+  [ -z "$file" ] && continue
+  label=$(basename "$file")
+
+  if [ "${label}" = "${CURRENT_FILE}" ]; then
+    CURRENT_ROW=$ROW_INDEX
+  fi
+
+  WALL_LIST+="${label}\0icon\x1f${WALL_DIR}/${label}\n"
+  ((ROW_INDEX++))
+done < <(find . -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \) -printf "%P\n" | sort)
+
+SELECTED_WALL=$(echo -en "$WALL_LIST" | rofi -dmenu -show-icons -selected-row "$CURRENT_ROW" -theme "$THEME" -p "  ")
+
+[ -z "$SELECTED_WALL" ] && exit 0
+
+TRANSITIONS=("wipe" "wave" "grow" "outer" "center" "left" "right" "top" "bottom")
+RANDOM_TRANSITION=${TRANSITIONS[$RANDOM % ${#TRANSITIONS[@]}]}
+
+"$CMD" img "$WALL_DIR/$SELECTED_WALL" \
+  --transition-type "$RANDOM_TRANSITION" \
+  --transition-step 90 \
+  --transition-fps 60 \
+  --transition-angle 30 \
+  --transition-duration 1.5
+
+sed -i "s|^wallpaper =.*|wallpaper = $WALL_DIR/$SELECTED_WALL|" "$WAYPAPER_CONFIG"
+
+exit 0
