@@ -12,13 +12,6 @@ transition_list=("grow" "wipe" "outer" "center")
 CHOSEN_ANGLE=${transition_angle[$RANDOM % ${#transition_angle[@]}]}
 CHOSEN_TYPE=${transition_list[$RANDOM % ${#transition_list[@]}]}
 
-# Update the wallpaper
-if pgrep -x "awww-daemon" >/dev/null; then
-  awww img "$WALLPAPER" --transition-type "$CHOSEN_TYPE" --transition-duration 3.0 --transition-fps 60 --transition-step 90 --transition-angle "$CHOSEN_ANGLE"
-elif pgrep -x "swww-daemon" >/dev/null; then
-  swww img "$WALLPAPER" --transition-type "$CHOSEN_TYPE" --transition-duration 3.0 --transition-fps 60 --transition-step 90 --transition-angle "$CHOSEN_ANGLE"
-fi
-
 # Python monochrome check
 IS_GRAYSCALE=false
 if command -v python3 &>/dev/null; then
@@ -44,6 +37,11 @@ else
   matugen -c "$HOME/.config/matugen/config.toml" image "$WALLPAPER" --mode dark --source-color-index 0
 fi
 
+# Trigger SwayNC Reload
+if command -v swaync-client &>/dev/null; then
+  swaync-client -rs &>/dev/null &
+fi
+
 # Reload Kitty
 if pgrep -x "kitty" >/dev/null; then
   kill -SIGUSR1 $(pgrep -x kitty)
@@ -54,9 +52,9 @@ if pgrep -x "waybar" >/dev/null; then
   kill -SIGUSR2 $(pgrep -x waybar)
 fi
 
-# Trigger SwayNC Reload
-if command -v swaync-client &>/dev/null; then
-  swaync-client -rs &>/dev/null &
+# Update the wallpaper
+if pgrep -x "awww-daemon" >/dev/null; then
+  awww img "$WALLPAPER" --transition-type "$CHOSEN_TYPE" --transition-duration 3.0 --transition-fps 60 --transition-step 90 --transition-angle "$CHOSEN_ANGLE"
 fi
 
 exit 0

@@ -2,14 +2,15 @@
 
 configuration {
     show-icons:                  false;
+    font:                        "CaskaydiaMono Nerd Font 12";
 }
 window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       650px;
-    height:                      480px;
+    width:                       700px;
+    height:                      500px;
     border:                      2px solid;
     border-radius:               16px;
     border-color:                @selected; 
@@ -29,7 +30,7 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     padding:                     12px 18px;
-    border-radius:               10px;
+    border-radius:               10px; 
     background-color:            @search-tint;
     text-color:                  @foreground;
     children:                    [ "entry" ];
@@ -87,14 +88,13 @@ message {
     enabled:                     true;
     padding:                     10px;
     border-radius:               8px;
-    background-color:            @background-alt;
+    background-color:            @hover-tint;
     text-color:                  @foreground;
 }
 
 textbox {
     background-color:            transparent;
-    text-color:                  inherit;
-    font:                        "JetBrainsMono Nerd Font 8.5";
+    text-color:                  @background-alt;
     horizontal-align:            0.5;
 }
 

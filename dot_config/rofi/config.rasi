@@ -5,7 +5,7 @@ configuration {
     modi:                        "drun";
     show-icons:                  true;
     drun-display-format:         "{name}";
-    font:                        "JetBrainsMono Nerd Font 10";
+    font:                        "CaskaydiaMono Nerd Font 12";
 }
 
 /*****----- Main Window -----*****/
@@ -54,24 +54,6 @@ inputbar {
     text-color:                  @foreground;
     children:                    [ "entry" ];
 }
-
-/* 
-
-prompt {
-    enabled:                     true;
-    background-color:            transparent;
-    text-color:                  inherit;
-}
-
-textbox-prompt-colon {
-    enabled:                     true;
-    expand:                      false;
-    str:                         "  ";
-    background-color:            transparent;
-    text-color:                  @foreground;
-}
-
-*/
 
 entry {
     enabled:                     true;

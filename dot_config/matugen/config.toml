@@ -9,7 +9,7 @@ post_hook = 'pkill -USR2 btop || true'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty.conf'
-output_path = '~/.config/kitty/colors-matugen.conf'
+output_path = '~/.config/kitty/colors/colors_kitty-matugen.conf'
 
 [templates.rofi]
 input_path = '~/.config/matugen/templates/rofi.rasi'

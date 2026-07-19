@@ -343,3 +343,7 @@
 2026-07-19T15:25:55 player: played "Spotify/Dynamic Fav/Lost Control.mp3"
 2026-07-19T15:29:09 player: played "High-Res/01 - Ado - Odoru Ponpokorin.flac"
 2026-07-19T15:32:25 player: played "High-Res/00 - Ado - Ashura-chan.flac"
+2026-07-19T15:35:15 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2026-07-19T15:35:15 player: played "Spotify/Dynamic Fav/I Don't Wanna Go.mp3"
+2026-07-19T15:38:30 player: played "Spotify/Dynamic Fav/On My Way.mp3"
+2026-07-19T16:25:04 player: played "Spotify/Dynamic Fav/On My Way.mp3"

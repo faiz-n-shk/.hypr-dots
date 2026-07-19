@@ -4,8 +4,8 @@
     "type": "auto",
     "source": "arch",
     "color": {
-      "1": "blue",
-      "2": "cyan"
+      "1": "green",
+      "2": "light_magenta"
     },
     "width": null,
     "height": null,
@@ -31,10 +31,10 @@
     "hideCursor": false,
     "separator": " ",
     "color": {
-      "keys": "cyan",
-      "title": "blue",
+      "keys": "yellow",
+      "title": "green",
       "output": "white",
-      "separator": "blue"
+      "separator": "red"
     },
     "brightColor": true,
     "duration": {
@@ -83,7 +83,7 @@
         "rightElapsed": ""
       },
       "color": {
-        "elapsed": "magenta",
+        "elapsed": "yellow",
         "total": "97",
         "border": "97"
       },
@@ -118,15 +118,15 @@
       "keyIcon": "",
       "fqdn": false,
       "color": {
-        "user": "blue",
-        "at": "magenta",
-        "host": "blue"
+        "user": "red",
+        "at": "yellow",
+        "host": "green"
       }
     },
     {
       "type": "separator",
       "string": "—",
-      "outputColor": "magenta"
+      "outputColor": "red"
     },
     {
       "type": "os",

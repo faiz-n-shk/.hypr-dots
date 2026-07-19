@@ -63,6 +63,8 @@ THUMB_PATH="${THUMB_DIR}/$SELECTED_WALL"
 # 1. Run update_theme script asynchronously to change colors instantly
 ~/.config/hypr/scripts/update_theme "$FULL_WALL_PATH" &
 
+wait
+
 # 2. Extract 8 prominent hex colors from the thumbnail for the fastfetch dot array
 if command -v magick &>/dev/null; then
   hex_colors=$(magick "$THUMB_PATH" -colors 8 -unique-colors txt: | grep -oP '#[0-9A-Fa-f]{6}')
