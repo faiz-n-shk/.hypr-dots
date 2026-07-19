@@ -1,2 +1,9 @@
+clipse
+clipse-gui
 hyprland-preview-share-picker-git
+java-openjfx
+legacy-launcher
+mcaselector
+nbtexplorer-bin
+rustdesk
 snappy-switcher
