@@ -1,1 +1,5 @@
+# ~/.local/share/chezmoi/.chezmoiignore
+
 ~/.config/clipse/clipboard_history.json
+~/.config/clipse/tmp_files/.keep
+~/.config/clipse/clipse.log
