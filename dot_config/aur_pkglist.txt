@@ -1,6 +1,2 @@
 hyprland-preview-share-picker-git
-java-openjfx
-legacy-launcher
-mcaselector
-nbtexplorer-bin
 snappy-switcher
