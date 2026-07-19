@@ -37,6 +37,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hypridle")
 
 	-- Clipboard
+	hl.exec_cmd("clipse -listen")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store -max-items 500")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store -max-items 100")
 end)

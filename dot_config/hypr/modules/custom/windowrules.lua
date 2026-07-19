@@ -39,3 +39,13 @@ hl.layer_rule({
 	blur = true,
 	ignore_alpha = 0.5,
 })
+
+hl.window_rule({
+	match = {
+		class = "clipse-gui",
+	},
+	float = true,
+	size = "700 600",
+	move = "50% 10", -- modify to waybar's height
+	pin = true,
+})

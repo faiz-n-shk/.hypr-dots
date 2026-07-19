@@ -17,7 +17,8 @@ local shiftMod = "SUPER + SHIFT"
 ---- DEFINE SCRIPTS ----
 ------------------------
 
-local clipboard = "~/.config/hypr/scripts/clipboard_menu"
+-- local clipboard = "~/.config/hypr/scripts/clipboard_menu"
+local clipboard = "clipse-gui"
 local quickMenu = "~/.config/hypr/scripts/quick_menu"
 local waybarReload = "~/.config/waybar/scripts/launch_waybar"
 local wallpaper = "~/.config/hypr/scripts/wallpaper_switcher"
