@@ -2,32 +2,27 @@
 
 WALL_DIR="$HOME/Pictures/Wallpapers"
 THEME="$HOME/.config/rofi/themes/wallpaper_switcher.rasi"
-WAYPAPER_CONFIG="$HOME/.config/waypaper/config.ini"
+THUMB_DIR="${WALL_DIR}/.thumbnails"
 
+mkdir -p "$THUMB_DIR"
 cd "$WALL_DIR" || exit 1
 
-# Cleanly parse current wallpaper
-CURRENT_WALL=$(grep "^wallpaper =" "$WAYPAPER_CONFIG" | cut -d'=' -f2- | tr -d '"'\'' ')
-CURRENT_WALL="${CURRENT_WALL/#\~/$HOME}"
-CURRENT_FILE=$(basename "$CURRENT_WALL")
-
-# Fix for confusion between awww and swww bruh
+# Fix me confusion
 if pgrep -x "awww-daemon" >/dev/null; then
   CMD="awww"
-elif pgrep -x "swww-daemon" >/dev/null; then
-  CMD="swww"
 else
-  if command -v awww-daemon &>/dev/null; then
-    awww-daemon &
-    CMD="awww"
-  else
-    swww-daemon &
-    CMD="swww"
-  fi
-  sleep 0.5
+  CMD="swww"
 fi
 
-# Array list
+# Read active wallpaper
+if [ "$CMD" = "awww" ]; then
+  CURRENT_WALL=$(awww query | grep -oP 'image: \K.*')
+else
+  CURRENT_WALL=$(swww query | awk -F': ' '{print $2}' | head -n 1)
+fi
+CURRENT_FILE=$(basename "$CURRENT_WALL" | tr -d '"'\'' ')
+
+# Create cache matrix and track current row
 ROW_INDEX=0
 CURRENT_ROW=0
 WALL_LIST=""
@@ -40,20 +35,29 @@ while read -r file; do
     CURRENT_ROW=$ROW_INDEX
   fi
 
-  WALL_LIST+="${label}\0icon\x1f${WALL_DIR}/${label}\n"
+  # If thumbnail doesn't exist, generate a tiny 180px cache image instantly
+  if [ ! -f "${THUMB_DIR}/${label}" ]; then
+    ffmpegthumbnailer -i "${file}" -o "${THUMB_DIR}/${label}" -s 180 &>/dev/null &
+    # Fallback to original image temporarily while the background thread bakes the thumbnail
+    THUMB_PATH="${WALL_DIR}/${label}"
+  else
+    THUMB_PATH="${THUMB_DIR}/${label}"
+  fi
+
+  # Let rofi use thumbnail cache instead of actual image
+  WALL_LIST+="${label}\0icon\x1f${THUMB_PATH}\n"
   ((ROW_INDEX++))
 done < <(find . -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \) -printf "%P\n" | sort)
 
-# Open Rofi pre-focused on current applied wallpaper index row
-SELECTED_WALL=$(echo -en "$WALL_LIST" | rofi -dmenu -show-icons -selected-row "$CURRENT_ROW" -theme "$THEME" -p "  ")
+# Wait for any background thumbnail generation threads to finish up cleanly
+wait
 
-# Exit if selection cancelled
+# Open Rofi pre-focused on active row number
+SELECTED_WALL=$(echo -en "$WALL_LIST" | rofi -dmenu -sort false -show-icons -selected-row "$CURRENT_ROW" -theme "$THEME" -p "  ")
+
 [ -z "$SELECTED_WALL" ] && exit 0
 
-# Update config file
-sed -i "s|^wallpaper =.*|wallpaper = ${WALL_DIR}/${SELECTED_WALL}|" "$WAYPAPER_CONFIG"
-
-# Execute the matugen update_theme script
+# Run update_theme script asynchronously
 ~/.config/hypr/scripts/update_theme "$WALL_DIR/$SELECTED_WALL" &
 
 exit 0

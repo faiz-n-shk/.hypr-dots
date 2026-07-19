@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # File paths
-THEME_FILE="~/.config/hypr/themes/clipboard_menu.rasi"
+THEME_FILE="~/.config/rofi/themes/clipboard_menu.rasi"
 
 # Custom action buttons
 KEY_COPY="Alt+c"
@@ -11,7 +11,6 @@ while true; do
   selection=$(
     cliphist list | rofi \
       -dmenu \
-      -p "📋 Clipboard" \
       -mesg " [Enter] Paste Directly  |  [$KEY_COPY] Copy Only  |  [$KEY_DELETE] Delete Item" \
       -theme "$THEME_FILE" \
       -kb-custom-1 "$KEY_COPY" \

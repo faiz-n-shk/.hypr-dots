@@ -8,7 +8,8 @@
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
   opacity: 1;
-  background: @noti-bg-darker;
+  /* FIXED: Uses a lighter theme tint instead of standard dark block grids */
+  background: alpha(@bg-selected, 0.25);
 }
 
 .notification-row {
@@ -42,7 +43,8 @@
 }
 
 .notification {
-  background: @cc-bg;
+  /* FIXED: Gives individual text alerts a clean themed card background */
+  background: @noti-bg;
   border: 2px solid @border-green;
   margin: 3px -2px 3px 0;
 }
@@ -76,7 +78,7 @@
 .notification-default-action:hover,
 .notification-action:hover {
   color: @blue-base;
-  background: @cc-bg;
+  background: alpha(@bg-selected, 0.15);
 }
 
 .inline-reply-entry {
@@ -108,7 +110,7 @@
   font-size: 16px;
   font-weight: 700;
   background: transparent;
-  color: @green-base;
+  color: @border-green; /* Pops with your primary active accent color */
   text-shadow: none;
 }
 
@@ -129,14 +131,21 @@
   text-shadow: none;
 }
 
+/* =========================================================================
+   === MAIN PANEL CONTAINER (FIXED: Applies a vibrant frosted tint) ===
+   ========================================================================= */
 .control-center {
-  background: @cc-bg;
+  /* YOUR IDEA: Forces the main panel backing to use your wallpaper's native tint */
+  background: alpha(@cc-bg, 0.75); 
   border: 2px solid @border-green;
 }
 
+/* =========================================================================
+   === MEDIA PLAYER & INTERNAL CARD BLOCKS ===
+   ========================================================================= */
 .widget-title {
-  color: @blue-base;
-  background: @noti-bg-darker;
+  color: @text-color;
+  background: alpha(@bg-selected, 0.35); /* 35% visible wallpaper color container */
   padding: 5px 10px;
   margin: 10px;
   font-size: 1.5rem;
@@ -145,29 +154,29 @@
 .widget-title>button {
   font-size: 1rem;
   color: @text-color;
-  background: @noti-bg;
+  background: alpha(@bg-selected, 0.20);
   box-shadow: none;
 }
 
 .widget-title>button:hover {
   background: @red-base;
-  color: @cc-bg;
+  color: @text-color;
 }
 
 .widget-dnd {
-  background: @noti-bg-darker;
+  background: alpha(@bg-selected, 0.20);
   padding: 5px 10px;
   margin: 20px 10px 5px 10px;
   font-size: large;
-  color: @blue-base;
+  color: @text-color;
 }
 
 .widget-dnd>switch {
-  background: @blue-base;
+  background: alpha(@text-color, 0.15);
 }
 
 .widget-dnd>switch:checked {
-  background: @red-base;
+  background: @border-green;
 }
 
 .widget-label>label {
@@ -180,39 +189,39 @@
   font-size: x-large;
   padding: 5px;
   margin: 0px 10px 10px 10px;
-  background: @noti-bg-darker;
+  background: alpha(@bg-selected, 0.15);
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
   margin: 3px;
   padding: 5px 20px;
-  background: @cc-bg;
+  background: alpha(@cc-bg, 0.60);
   color: @text-color;
   transition: background-color 0.15s ease-in-out;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-  background: @blue-base;
+  background: @border-green;
   color: @cc-bg;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:checked {
-  background: @green-base;
-  color: @cc-bg;
+  background: @bg-selected;
+  color: @text-color;
 }
 
 .widget-volume,
 .widget-backlight {
-  background: @noti-bg-darker;
-  padding: 5px;
+  background: alpha(@bg-selected, 0.20);
+  padding: 10px;
   margin: 5px 10px;
-  font-size: 2rem;
-  color: @blue-base;
+  font-size: 1.3rem;
+  color: @text-color;
 }
 
 .widget-mpris {
   color: @text-color;
-  background: @noti-bg-darker;
+  background: alpha(@bg-selected, 0.25); 
   margin: 0px 10px 10px 10px;
   box-shadow: none;
 }
@@ -222,6 +231,7 @@
 .widget-mpris-album-art {
   box-shadow: none;
   margin: 10px;
+  background: transparent;
 }
 
 picture.mpris-background {

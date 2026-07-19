@@ -1,20 +1,18 @@
 @import "colors-matugen.rasi"
 
 configuration {
-    show-icons:                  true;
+    show-icons:                  false;
 }
-
-
 window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       950px;
-    height:                      620px;
+    width:                       650px;
+    height:                      480px;
     border:                      2px solid;
     border-radius:               16px;
-    border-color:                @selected;
+    border-color:                @selected; 
     background-color:            @background-tint; 
     cursor:                      "default";
 }
@@ -24,15 +22,14 @@ mainbox {
     spacing:                     15px;
     padding:                     25px;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "inputbar", "listview", "message" ];
 }
-
 
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     12px 20px;
-    border-radius:               15px;
+    padding:                     12px 18px;
+    border-radius:               10px;
     background-color:            @search-tint;
     text-color:                  @foreground;
     children:                    [ "entry" ];
@@ -42,41 +39,36 @@ entry {
     enabled:                     true;
     background-color:            transparent;
     text-color:                  inherit;
-    placeholder:                 "Search wallpapers...";
+    placeholder:                 "Search clipboard history...";
     placeholder-color:           inherit;
 }
 
-
 listview {
     enabled:                     true;
-    columns:                     3;
-    lines:                       2;
+    columns:                     1;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
-    fixed-height:                true;
-    fixed-columns:               true;
-    spacing:                     20px;
+    fixed-height:                false;
+    
+    spacing:                     6px;
     background-color:            transparent;
 }
 
 element {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     15px;
-    border-radius:               12px;
+    padding:                     10px 14px;
+    border-radius:               8px;
     background-color:            transparent;
     text-color:                  @foreground;
-    orientation:                 vertical;
-    cursor:                      pointer;
 }
 
 element normal.normal,
 element alternate.normal {
     background-color:            transparent;
     text-color:                  @foreground;
-    border:                      0px solid;
 }
 
 element selected.normal {
@@ -85,15 +77,24 @@ element selected.normal {
     font-weight:                 bold;
 }
 
-element-icon {
-    background-color:            transparent;
-    size:                        180px;
-    horizontal-align:            0.5;
-}
-
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
-    horizontal-align:            0.5;
     vertical-align:              0.5;
 }
+
+message {
+    enabled:                     true;
+    padding:                     10px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+textbox {
+    background-color:            transparent;
+    text-color:                  inherit;
+    font:                        "JetBrainsMono Nerd Font 8.5";
+    horizontal-align:            0.5;
+}
+

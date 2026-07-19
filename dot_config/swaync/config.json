@@ -4,11 +4,11 @@
   "positionY": "top",
 	"cssPriority": "user",
 
-  "control-center-width": 393,
-  "control-center-height": 600, 
+  "control-center-width": 392,
+  "control-center-height": 650, 
   "control-center-margin-top": 2,
   "control-center-margin-bottom": 2,
-  "control-center-margin-right": 18,
+  "control-center-margin-right": 19,
   "control-center-margin-left": 0,
 
   "notification-window-width": 400,

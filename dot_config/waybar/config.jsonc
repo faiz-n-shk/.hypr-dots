@@ -6,12 +6,13 @@
     "spacing": 4,
 
   // Modules
-
     "modules-left": [
-    "group/left-pill"
+    "group/left-pill",
+    "hyprland/window"
     ],
     "modules-center": [
     "clock",
+    "custom/separatordot",
     "hyprland/workspaces",
     "custom/separatordot",
     "clock#right"
@@ -19,7 +20,8 @@
     "modules-right": [
     "custom/network",
     "battery",
-    "group/right-pill"
+    "tray",
+    "custom/notification"
     ],
 
   // Modules configuration
@@ -31,24 +33,16 @@
     "orientation": "horizontal",
     "modules": [
         "pulseaudio",
-        "backlight",
-        "hyprland/window"
+        "backlight"
     ]
 },
-  "group/right-pill": {
-    "orientation": "horizontal",
-    "modules": [
-        "tray",
-        "custom/notification"
-    ]
-  },
   "hyprland/window": {
     "format": "{class}",
-    "separate-outputs": true
+    "separate-outputs": true,
 },
   "backlight": {
   	"device": "intel_backlight",
-	  "format": "{percent}% {icon}",
+	  "format": "{icon}{percent}%",
 	  "format-icons": ["󰃛", "󰃜", "󰃞 ", "󰃝 ", "󰃟 ", "󰃠 "]
 },
   "custom/network": {
@@ -58,8 +52,8 @@
     "tooltip": false
 },
 "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
     "format-muted": "󰝟",
     "format-icons": {
         "headphone": "",
@@ -76,15 +70,18 @@
     "ignored-sinks": ["Easy Effects Sink"]
 },
   "clock":{
-    "format": "{:%H:%M}"
+    "format": "{:%H:%M}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%I:%M %p}</big>\n<tt>{calendar}</tt>"
   },
   "clock#right":{
-    "format": "{:%a, %d/%m/%y}"
+    "format": "{:%a, %d/%m/%y}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
-  // Waybar at top layer
-  "all-outputs": false,
+    "all-outputs": false,
     "warp-on-scroll": false,
     "format": "{icon}",
     "format-icons": {

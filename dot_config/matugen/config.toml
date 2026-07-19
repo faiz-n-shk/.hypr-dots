@@ -1,6 +1,12 @@
 [config]
 mode = "dark"
 
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/colors_btop-matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
+
+
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty.conf'
 output_path = '~/.config/kitty/colors-matugen.conf'
@@ -15,8 +21,26 @@ output_path = '~/.config/waybar/colors/colors-matugen.css'
 
 [templates.swaync]
 input_path = "~/.config/matugen/templates/swaync.css"
-output_path = "~/.config/swaync/colors-matugen.css"
+output_path = "~/.config/swaync/colors/colors-matugen.css"
 
 [templates.hypr]
 input_path = "~/.config/matugen/templates/hyprland.lua"
 output_path = "~/.config/hypr/colors/colors-matugen.lua"
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/colors_gtk3-matugen.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/colors_gtk4-matugen.css'
+post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
+
+[templates.qt5ct]
+input_path = '~/.config/matugen/templates/qt.conf'
+output_path = '~/.config/qt5ct/colors/colors_qt5-matugen.conf'
+
+[templates.qt6ct]
+input_path = '~/.config/matugen/templates/qt.conf'
+output_path = '~/.config/qt6ct/colors/colors_qt6-matugen.conf'
