@@ -3,6 +3,7 @@
   "positionX": "right",
   "positionY": "top",
 	"cssPriority": "user",
+  "layer": "overlay",
 
   "control-center-width": 392,
   "control-center-height": 650, 
@@ -16,9 +17,9 @@
   "notification-body-image-height": 160,
   "notification-body-image-width": 200,
 
-  "timeout": 4,
-  "timeout-low": 2,
-  "timeout-critical": 6,
+  "timeout": 5,
+  "timeout-low": 3,
+  "timeout-critical": 7,
   
   "fit-to-screen": false,
   "keyboard-shortcuts": true,

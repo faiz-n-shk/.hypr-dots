@@ -1,28 +1,27 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "middle",
-    "position": "top",
-    "margin-top": 5,
-    "spacing": 4,
+  "layer": "middle",
+  "position": "top",
+  "margin-top": 5,
+  "spacing": 4,
 
   // Modules
-    "modules-left": [
-    "group/left-pill",
-    "hyprland/window"
-    ],
-    "modules-center": [
-    "clock",
-    "custom/separatordot",
-    "hyprland/workspaces",
-    "custom/separatordot",
-    "clock#right"
+  "modules-left": [
+  "group/left-pill",
+  "hyprland/window"
   ],
-    "modules-right": [
-    "custom/network",
-    "battery",
-    "tray",
-    "custom/notification"
-    ],
+  "modules-center": [
+  "clock",
+  "custom/separatordot",
+  "hyprland/workspaces",
+  "custom/separatordot",
+  "clock#right"
+  ],
+  "modules-right": [
+  "custom/network",
+  "battery",
+  "custom/notification"
+  ],
 
   // Modules configuration
   "custom/separatordot": {
@@ -97,15 +96,10 @@
         "10": "什",
     }
 },
-	"tray": {
-		"icon-size": 16,
-		"spacing": 12,
-		"cursor": true
-},
   "battery": {
     "bat": "BAT1",
     "interval": "10",
-    "format": "{capacity}% {icon}",
+    "format": "{icon} {capacity}%",
     "format-icons": {
         "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
@@ -113,7 +107,7 @@
 },
   "custom/notification": {
     "tooltip": false,
-    "format": "{} {icon}",
+    "format": "{icon}",
     "format-icons": {
         "notification": "<span foreground='red'><sup></sup></span>",
         "none": "",
