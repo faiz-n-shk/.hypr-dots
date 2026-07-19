@@ -34,7 +34,7 @@
       "keys": "cyan",
       "title": "blue",
       "output": "white",
-      "separator": "magenta"
+      "separator": "blue"
     },
     "brightColor": true,
     "duration": {
@@ -136,8 +136,8 @@
     },
     {
       "type": "host",
-      "key": "   ",
-      "keyIcon": "  "
+      "key": "󰌢 ",
+      "keyIcon": "󰌢 "
     },
     {
       "type": "kernel",
@@ -152,7 +152,7 @@
     {
       "type": "packages",
       "key": " ",
-      "keyIcon": "  ",
+      "keyIcon": "󰏖 ",
       "disabled": [
         "winget"
       ],
@@ -166,7 +166,7 @@
     {
       "type": "display",
       "key": " ",
-      "keyIcon": "  ",
+      "keyIcon": "󰍹 ",
       "format": "{width}x{height} [{refresh-rate}Hz]",
       "compactType": "none",
       "preciseRefreshRate": false,
@@ -185,13 +185,13 @@
     },
     {
       "type": "wmtheme",
-      "key": "   ",
-      "keyIcon": "  "
+      "key": "󰓸 ",
+      "keyIcon": "󰓸 "
     },
     {
       "type": "theme",
-      "key": "   ",
-      "keyIcon": "  "
+      "key": "󰉼 ",
+      "keyIcon": "󰉼 "
     },
     {
       "type": "icons",
@@ -219,8 +219,8 @@
     },
     {
       "type": "gpu",
-      "key": "   ",
-      "keyIcon": "  ",
+      "key": "󰾲 ",
+      "keyIcon": "󰾲 ",
       "format": "{name}",
       "driverSpecific": false,
       "detectionMethod": "pci",
@@ -246,7 +246,7 @@
     {
       "type": "colors",
       "key": " ",
-      "keyIcon": "",
+      "keyIcon": " ",
       "symbol": "circle",
       "paddingLeft": 0,
       "block": {
