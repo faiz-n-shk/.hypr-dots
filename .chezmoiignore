@@ -3,3 +3,8 @@
 ~/.config/clipse/clipboard_history.json
 ~/.config/clipse/tmp_files/.keep
 ~/.config/clipse/clipse.log
+
+~/.config/mpd/mpd.db
+~/.config/mpd/mpd.log
+~/.config/mpd/mpd.pid
+~/.config/mpd/mpdstate

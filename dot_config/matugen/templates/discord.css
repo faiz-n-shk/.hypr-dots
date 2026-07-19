@@ -1,129 +1,113 @@
-/* Import the Midnight layout engine */
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 
 body {
-    /* Font and sizing tweaks */
-    --font: 'figtree';
-    --code-font: '';
-    font-weight: 400;
-
-    --gap: 12px;
-    --divider-thickness: 4px;
-    --border-thickness: 1px;
-
-    --animations: on;
-    --list-item-transition: 0.2s ease;
-    --dms-icon-svg-transition: 0.4s ease;
-    --border-hover-transition: 0.2s ease;
-
-    --top-bar-height: var(--gap);
-    --top-bar-button-position: titlebar;
-    --top-bar-title-position: off;
-    --subtle-top-bar-title: off;
-
-    --custom-window-controls: on;
-    --window-control-size: 14px;
-
-    --custom-dms-icon: off;
-    --dms-icon-svg-url: url('');
-    --dms-icon-svg-size: 90%;
-    --dms-icon-color-before: var(--icon-subtle);
-    --dms-icon-color-after: var(--white);
-    --custom-dms-background: color;
-    --dms-background-color: var(--accent-3);
-
-    --background-image: off;
-    --transparency-tweaks: off;
-    --remove-bg-layer: off;
-    --panel-blur: off;
-    --blur-amount: 12px;
-    --bg-floating: var(--bg-3);
-
-    --custom-chatbar: off;
-    --chatbar-height: 47px;
-
-    --small-user-panel: on;
+--top-bar-height: 10px;
 }
 
-/* Color Overrides Using Matugen Outputs */
+/* customize things here */
 :root {
-    --colors: on;
+	/* font, change to 'gg sans' for default discord font*/
+	--font: 'figtree';
 
-    /* --- TEXT LAYERS --- */
-    --text-0: {{colors.on_primary.default.hex}};              /* Text on colored buttons */
-    --text-1: {{colors.on_background.default.hex}};           /* Pure contrast text */
-    --text-2: {{colors.on_surface.default.hex}};              /* Primary Headers */
-    --text-3: {{colors.on_surface_variant.default.hex}};      /* Normal Chat Text */
-    --text-4: {{colors.outline.default.hex}};                 /* Channels / Inactive Icons */
-    --text-5: {{colors.outline_variant.default.hex}};         /* Muted text / Timestamps */
+	/* top left corner text */
+	--corner-text: 'Midnight';
 
-    /* --- HARD UI BACKGROUND BLOCKS --- */
-    --bg-1: {{colors.surface_container_highest.default.hex}}; /* Active clicked items */
-    --bg-2: {{colors.surface_container_high.default.hex}};    /* Secondary UI Buttons */
-    --bg-3: {{colors.surface_container.default.hex}};         /* Gaps, sidebars, secondary frames */
-    --bg-4: {{colors.background.default.hex}};                /* Main Chat Grid Background */
-    
-    /* --- INTERACTIVE STATE STATES --- */
-    --hover: {{colors.primary.default.hex}}1A;                /* 10% opacity accent tint on hover */
-    --active: {{colors.primary.default.hex}}33;               /* 20% opacity accent tint on select */
-    --active-2: {{colors.primary.default.hex}}4D;             /* 30% opacity accent tint */
-    --message-hover: {{colors.on_surface.default.hex}}08;     /* Subtle chat line item hover */
+	/* color of status indicators and window controls */
+    --online-indicator: {{colors.inverse_primary.default.hex}};     /* change to #23a55a for default green */
+	--dnd-indicator: {{colors.error.default.hex}};                  /* change to #f13f43 for default red */
+	--idle-indicator: {{colors.tertiary_container.default.hex}};    /* change to #f0b232 for default yellow */
+	--streaming-indicator: {{colors.on_primary.default.hex}};       /* change to #593695 for default purple */
 
-    /* --- THEME ACCENTS (Pings, Links, Primary Toggles) --- */
-    --accent-1: {{colors.primary.default.hex}};               /* Chat Links */
-    --accent-2: {{colors.primary.default.hex}};               /* Micro Highlights */
-    --accent-3: {{colors.primary.default.hex}};               /* Action Buttons */
-    --accent-4: {{colors.primary_container.default.hex}};     /* Accent Hovers */
-    --accent-5: {{colors.on_primary_container.default.hex}};  /* Accent Active States */
-    --accent-new: {{colors.primary.default.hex}};             /* Redefines notifications to match theme */
-    
-    /* --- MESSAGES / MENTIONS BRIDGES --- */
-    --mention: linear-gradient(to right, {{colors.primary.default.hex}}26 40%, transparent); /* Highlighted pings */
-    --mention-hover: linear-gradient(to right, {{colors.primary.default.hex}}33 40%, transparent);
-    --reply: linear-gradient(to right, {{colors.surface_container_highest.default.hex}}33 40%, transparent);
-    --reply-hover: linear-gradient(to right, {{colors.surface_container_highest.default.hex}}4D 40%, transparent);
+	/* accent colors */
+    --accent-1: {{colors.tertiary.default.hex}};            /* links */
+	--accent-2: {{colors.primary.default.hex}};             /* general unread/mention elements, some icons when active */
+	--accent-3: {{colors.primary.default.hex}};             /* accent buttons */
+	--accent-4: {{colors.surface_bright.default.hex}};      /* accent buttons when hovered */
+	--accent-5: {{colors.primary_fixed_dim.default.hex}};   /* accent buttons when clicked */
+    --accent-new: {{colors.inverse_primary.default.hex}};   /* user panel mute & deafen buttons */
+	--mention:  {{colors.surface.default.hex}};             /* mentions & mention messages */
+	--mention-hover: {{colors.surface_bright.default.hex}}; /* mentions & mention messages when hovered */
 
-    /* --- BORDERS & LINES --- */
-    --border-light: var(--hover);
-    --border: var(--active);
-    --border-hover: var(--active);
-    --button-border: hsl(220, 0%, 100%, 0.1);
+	/* text colors */
+	--text-0: {{colors.surface.default.hex}};               /* text on colored elements */
+	--text-1: {{colors.on_surface.default.hex}};            /* other normally white text */
+	--text-2: {{colors.on_surface.default.hex}};            /* headings and important text */
+	--text-3: {{colors.on_surface_variant.default.hex}};    /* normal text */
+	--text-4: {{colors.on_surface_variant.default.hex}};    /* icon buttons and channels */
+	--text-5: {{colors.outline.default.hex}};               /* muted channels/chats and timestamps */
 
-    /* --- STATUS INDICATOR MAPPINGS --- */
-    --online: var(--green-2);
-    --dnd: var(--red-2);
-    --idle: var(--yellow-2);
-    --streaming: var(--purple-2);
-    --offline: var(--text-4);
+	/* background and dark colors */
+  --bg-1: {{colors.surface_variant.default.hex}};                             /* dark buttons when clicked */
+	--bg-2: {{colors.surface_container_high.default.hex}};              /* dark buttons */
+	--bg-3: {{colors.surface_container_low.default.hex}};               /* spacing, secondary elements */
+	--bg-4: {{colors.surface.default.hex}};                             /* main background color */
+	--hover: {{colors.surface_bright.default.hex}};                     /* channels and buttons when hovered */
+	--active: {{colors.surface_bright.default.hex}};                    /* channels and buttons when clicked or selected */
+	--message-hover: {{colors.surface_bright.default.hex}};             /* messages when hovered */
 
-    /* --- DYNAMIC BASE COLOR PALETTES (Generated by Matugen) --- */
-    --red-1: {{colors.error_container.default.hex}};
-    --red-2: {{colors.error.default.hex}};
-    --red-3: {{colors.error.default.hex}};
-    --red-4: {{colors.on_error.default.hex}};
-    --red-5: {{colors.on_error_container.default.hex}};
+	/* amount of spacing and padding */
+	--spacing: 12px;
 
-    --green-1: {{colors.source_color.default.hex}}; /* Custom fallback palette handles green/blue tags */
-    --green-2: #43a047; 
-    --green-3: #2e7d32;
-    --green-4: #1b5e20;
-    --green-5: #003300;
+	/* animations */
+	/* ALL ANIMATIONS CAN BE DISABLED WITH REDUCED MOTION IN DISCORD SETTINGS */
+	--list-item-transition: 0.2s ease;  /* channels/members/settings hover transition */
+	--unread-bar-transition: 0.2s ease; /* unread bar moving into view transition */
+	--moon-spin-transition: 0.4s ease;  /* moon icon spin */
+	--icon-spin-transition: 1s ease;    /* round icon button spin (settings, emoji, etc.) */
 
-    --blue-1: {{colors.primary_container.default.hex}};
-    --blue-2: {{colors.primary.default.hex}};
-    --blue-3: {{colors.primary.default.hex}};
-    --blue-4: {{colors.on_primary.default.hex}};
-    --blue-5: {{colors.on_primary_container.default.hex}};
+	/* corner roundness (border-radius) */
+	--roundness-xl: 22px; /* roundness of big panel outer corners */
+	--roundness-l: 20px; /* popout panels */
+	--roundness-m: 16px; /* smaller panels, images, embeds */
+	--roundness-s: 12px; /* members, settings inputs */
+	--roundness-xs: 10px; /* channels, buttons */
+	--roundness-xxs: 8px; /* searchbar, small elements */
 
-    --yellow-1: #fff59d;
-    --yellow-2: #fbc02d;
-    --yellow-3: #f57f17;
-    --yellow-4: #f57f17;
-    --yellow-5: #5d4037;
+	/* direct messages moon icon */
+	/* change to block to show, none to hide */
+	--discord-icon: block; /* discord icon */
+	--moon-icon: none; /* moon icon */
+	--moon-icon-url: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg'); /* custom icon url */
+	--moon-icon-size: auto;
 
-    --purple-1: {{colors.tertiary_container.default.hex}};
-    --purple-2: {{colors.tertiary.default.hex}};
-    --purple-3: {{colors.tertiary.default.hex}};
-    --purple-4: {{colors.on_tertiary.default.hex}};
-    --purple-5: {{colors.on_tertiary_container.default.hex}};
+	/* filter uncolorable elements to fit theme */
+	/* (just set to none, they're too much work to configure) */
+	--login-bg-filter: saturate(0.3) hue-rotate(-15deg) brightness(0.4); /* login background artwork */
+	--green-to-accent-3-filter: hue-rotate(56deg) saturate(1.43); /* add friend page explore icon */
+	--blurple-to-accent-3-filter: hue-rotate(304deg) saturate(0.84) brightness(1.2); /* add friend page school icon */
+}
+
+/* Selected chat/friend text */
+.selected_f5eb4b,
+.selected_f6f816 .link_d8bfb3 {
+  color: var(--text-0) !important;
+  background: var(--accent-3) !important;
+}
+
+.selected_f6f816 .link_d8bfb3 * {
+  color: var(--text-0) !important;
+  fill: var(--text-0) !important;
+}
+
+/* Erase the Moon and Restore Default Discord Icon */
+[class*="homeIcon_"] {
+    display: block !important;
+}
+
+[class*="childWrapper_"] {
+    background-image: none !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+}
+
+[class*="childWrapper_"]::before,
+[class*="childWrapper_"]::after {
+    content: none !important;
+    display: none !important;
+}
+
+[class*="childWrapper_"] svg {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
 }

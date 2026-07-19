@@ -1,7 +1,7 @@
 local M = {
-	primary = "rgba(f1be6dee)",
-	secondary = "rgba(dcc3a1ee)",
-	inactive = "rgba(3a342baa)",
+	primary = "rgba(ffb4abee)",
+	secondary = "rgba(e7bdb8ee)",
+	inactive = "rgba(3d3231aa)",
 }
 
 return M
