@@ -20,6 +20,7 @@
   "modules-right": [
   "custom/network",
   "battery",
+  "tray",
   "custom/notification"
   ],
 
@@ -48,9 +49,20 @@
     "exec": "nmcli -t -f TYPE,NAME,DEVICE connection show --active | awk -F: '$1==\"802-11-wireless\"{printf \"<span rise=\\\"1000\\\">\\uF0928</span> %s\\n\", $2; exit} $1==\"802-3-ethernet\"{printf \"<span rise=\\\"100\\\">\\uF0200</span> %s\\n\", $2; exit}'; [[ ${PIPESTATUS} -eq 0 ]] || echo '<span rise=\\\"1500\\\">\\uF092D</span> Disconnected'",
     "interval": 5,
     "format": "{}",
-    "tooltip": false
+    "tooltip": false,
+
 },
-"pulseaudio": {
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+    "icons": {
+      "nm-applet": "network-wired-symbolic",
+      "steam": "steam_tray-symbolic",
+      "clipse-gui": "edit-copy-symbolic",
+      "steam": "steam"
+    }
+  },
+  "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} {volume}%",
     "format-muted": "󰝟",

@@ -13,6 +13,7 @@ text/plain=nvim.desktop
 application/x-compressed-tar=org.gnome.FileRoller.desktop
 application/json=nvim.desktop
 image/jpeg=swayimg.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;

@@ -47,6 +47,9 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 -- Open Browser
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 
+-- Open Private Browser
+hl.bind(shiftMod .. " + B", hl.dsp.exec_cmd(browser .. " --private-window"))
+
 ----------------------------
 ---- TOOLS KEYBINDINGS ----
 ----------------------------
@@ -86,7 +89,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(shiftMod .. " + R", hl.dsp.exec_cmd(waybarReload))
 
 --Toggle battery charge_type (Conservation/Full Charge)
-hl.bind(shiftMod .. " + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_battery"))
+hl.bind(shiftMod .. " + C", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_battery"))
 
 --Display Monitor Menu
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/monitor_menu"))
