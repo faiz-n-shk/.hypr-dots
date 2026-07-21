@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Hardcoded target state that the script updates inside itself
-CURRENT_STATE="true"
+CURRENT_STATE="false"
 
 # 1. Map the state to Rofi menu text and the next execution state
 if [ "$CURRENT_STATE" = "true" ]; then

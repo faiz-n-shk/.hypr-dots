@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Get the directory where this Bash script lives
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
 WALLPAPER="$1"
 if [ -z "$WALLPAPER" ]; then
   echo "Error: No wallpaper path provided."
@@ -12,29 +15,57 @@ transition_list=("grow" "wipe" "outer" "center")
 CHOSEN_ANGLE=${transition_angle[$RANDOM % ${#transition_angle[@]}]}
 CHOSEN_TYPE=${transition_list[$RANDOM % ${#transition_list[@]}]}
 
-# Python monochrome check
+# Extracted color metrics via Python
 IS_GRAYSCALE=false
+WALL_HEX=""
+LIGHT_OR_DARK="light"
+
 if command -v python3 &>/dev/null; then
-  if python3 -c "
-import sys
-from PIL import Image
-img = Image.open('$WALLPAPER').convert('RGB').resize((50, 50))
-pixels = list(img.getdata())
-r, g, b = zip(*pixels)
-# Calculate standard deviation across RGB channels to identify color presence
-variance = sum(abs(r[i]-g[i]) + abs(g[i]-b[i]) + abs(b[i]-r[i]) for i in range(len(pixels))) / len(pixels)
-if variance < 15.0:
-    print('true')
-" 2>/dev/null | grep -q "true"; then
-    IS_GRAYSCALE=true
-  fi
+  export DETECT_WALLPAPER="$WALLPAPER"
+
+  # Call the update_theme-accents python3 file
+  read -r IS_GRAYSCALE WALL_HEX LIGHT_OR_DARK < <(python3 "$SCRIPT_DIR/update_theme-accents" 2>/dev/null)
 fi
 
 # Compile matugen templates
-if [ "$IS_GRAYSCALE" = true ]; then
+if [ "$IS_GRAYSCALE" = "true" ]; then
   matugen -c "$HOME/.config/matugen/config.toml" image "$WALLPAPER" --type scheme-monochrome --mode dark --source-color-index 0
 else
   matugen -c "$HOME/.config/matugen/config.toml" image "$WALLPAPER" --mode dark --source-color-index 0
+fi
+
+# Dynamically apply matching cursor accent
+if [ "$IS_GRAYSCALE" = "true" ]; then
+  THEME_NAME="catppuccin-mocha-${LIGHT_OR_DARK}-cursors"
+else
+  THEME_NAME="catppuccin-mocha-${WALL_HEX}-cursors"
+fi
+
+# Write status execution metrics securely to tracking log
+echo "Wallpaper: $WALLPAPER | Mode: Grayscale=$IS_GRAYSCALE Brightness_Fallback=$LIGHT_OR_DARK | Applied Theme: $THEME_NAME" >/tmp/cursor_match.log
+
+# Apply and persist theme across system configuration files
+if [ -n "$THEME_NAME" ]; then
+  # Live compositor update
+  hyprctl setcursor "$THEME_NAME" 24
+
+  # Dynamic environmental variables
+  hyprctl setenv XCURSOR_THEME "$THEME_NAME"
+  hyprctl setenv HYPRCURSOR_THEME "$THEME_NAME"
+
+  # Sync active GTK desktop environment runtimes
+  if command -v gsettings &>/dev/null; then
+    gsettings set org.gnome.desktop.interface cursor-theme "$THEME_NAME"
+  fi
+
+  # Modern XDG baseline directory pointer configuration update
+  mkdir -p "$HOME/.local/share/icons/default"
+  echo -e "[Icon Theme]\nInherits=${THEME_NAME}" >"$HOME/.local/share/icons/default/index.theme"
+
+  # Sync user local fallback settings files
+  mkdir -p "$HOME/.config/gtk-3.0"
+  touch "$HOME/.config/gtk-3.0/settings.ini"
+  sed -i "s/^gtk-cursor-theme-name=.*/gtk-cursor-theme-name=${THEME_NAME}/" "$HOME/.config/gtk-3.0/settings.ini" 2>/dev/null
 fi
 
 # Trigger SwayNC Reload

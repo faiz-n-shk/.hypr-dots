@@ -56,8 +56,7 @@
     "icon-size": 16,
     "spacing": 10,
     "icons": {
-      "nm-applet": "network-wired-symbolic",
-      "steam": "steam_tray-symbolic",
+      "nm-applet": "network-wired-symbolic", 
       "clipse-gui": "edit-copy-symbolic",
       "steam": "steam"
     }
