@@ -4,40 +4,38 @@ hl.window_rule({
 		class = ".*pavucontrol.*",
 	},
 	float = true,
-	size = "700 600",
-	move = "50% 10", -- modify to waybar's height
+	size = { 700, 600 },
+	move = { "50%", 10 }, -- '50%' as a string, offset as integer
 	pin = true,
 })
 
--- 1. Strip ALL decorations ONLY when you are inside a voice channel / live stream
+-- Match ANY channel/stream starting with specified symbols
 hl.window_rule({
 	match = {
 		class = "^(discord)$",
-		title = "^🔊.*$", -- Matches ANY title that starts with the speaker icon
+		title = "^[🔊🧊].*$",
 	},
-	opacity = "1.0 override", -- "override" forces absolute opacity, bypassing global layers
+	opacity = 1.0,
 	no_dim = true,
 	no_blur = true,
 	opaque = true,
 })
 
--- 2. Standard Discord behavior when NOT in a voice channel
+-- Standard behavior (Matches titles that do NOT start with those symbols)
 hl.window_rule({
 	match = {
 		class = "^(discord)$",
-		title = "negative:^🔊.*$", -- Triggers only when the title does NOT start with the speaker icon
+		title = "^(?![🔊🧊]).*$",
 	},
-	-- Leaves opacity blank so your global hl.config (0.90 / 0.80) naturally takes over
 })
 
 -- Force regex match on any layer surface starting with swaync
 hl.layer_rule({
 	match = { namespace = "^swaync-.*" },
 	blur = true,
-	ignore_alpha = 0.5,
+	ignore_alpha = 0.5, -- Numeric value without quotes
 })
 
--- Sea Of Theives Steam steam_app_1172620
 -- Target Sea of Thieves to use immediate rendering (tearing) to unlock FPS
 hl.window_rule({
 	match = {
@@ -57,7 +55,20 @@ hl.window_rule({
 		class = "clipse-gui",
 	},
 	float = true,
-	size = "700 600",
-	move = "50% 10", -- modify to waybar's height
+	size = { 700, 600 },
+	move = { "50%", 10 },
 	pin = true,
+})
+
+-- CS2 Configuration: Correctly confines cursor using official native API
+hl.window_rule({
+	match = {
+		class = ".*cs2.*|.*steam_app_730.*",
+	},
+	fullscreen = true,
+	confine_pointer = true, -- Officially traps the hardware mouse pointer inside the viewport
+	opacity = 1.0, -- Set pure number, override flag handled natively or via opaque
+	no_dim = true,
+	no_blur = true,
+	opaque = true,
 })
