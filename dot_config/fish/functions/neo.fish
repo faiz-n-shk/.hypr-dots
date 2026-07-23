@@ -1,76 +1,59 @@
 function neo --description 'Dynamic dotfile editor shortcut'
+    # Clean, scannable shortcuts list
+    set -l shortcuts "btop, cava, fastfetch, fish, hypr, kitty, nvim, rofi, swaync, waybar, yazi"
 
-    # Shortcuts
-    set -l shortcuts (string join ", " \
-      "-btop"\
-      "-cava"\
-      "-fastfetch"\
-      "-fish"\
-      "-hypr"\
-      "-kitty"\
-      "-nvim"\
-      "-rofi"\
-      "-swaync"\
-      "-waybar"\
-      "-waypaper"\
-      "-yazi")
-
-    # Trigger help display if no args or -h / --help is passed
-    if test (count $argv) -eq 0; or test "$argv" = -h
+    # Trigger help display if no args, too many args, or help flags are passed
+    if test (count $argv) -eq 0; or test "$argv" = -h; or test "$argv" = --help
         echo "Usage: neo [shortcut]"
         echo "Available shortcuts: $shortcuts"
         return 0
     end
 
-    set -l config_dir ""
+    # Define the base configuration directory
+    set -l config_dir ~/.config
+    set -l sub_dir ""
 
-    # Switch case for all config_dir
+    # Switch case to determine only the subfolder name
     switch $argv
-
-        # Btop
         case config.btop btop -btop
-            set config_dir "~/.config/btop"
+            set sub_dir btop
 
-            # Cava
         case config.cava cava -cava
-            set config_dir "~/.config/cava"
+            set sub_dir cava
 
-            # fastfetch
         case config.fastfetch fastfetch fetch -fastfetch -fetch
-            set config_dir "~/.config/fastfetch"
+            set sub_dir fastfetch
 
         case config.fish fish -fish
-            set config_dir "~/.config/fish"
+            set sub_dir fish
 
         case config.hypr hypr -hypr
-            set config_dir "~/.config/hypr"
+            set sub_dir hypr
 
         case config.kitty kitty -kitty
-            set config_dir "~/.config/kitty"
+            set sub_dir kitty
 
         case config.nvim neovim nvim -neovim -nvim
-            set config_dir "~/.config/nvim"
+            set sub_dir nvim
 
         case config.rofi rofi -rofi
-            set config_dir "~/.config/rofi"
+            set sub_dir rofi
 
         case config.swaync swaync -swaync
-            set config_dir "~/.config/swaync"
+            set sub_dir swaync
 
         case config.waybar waybar -waybar
-            set config_dir "~/.config/waybar"
-
-        case config.waypaper waypaper wpaper -waypaper -wpaper
-            set config_dir "~/.config/waypaper"
+            set sub_dir waybar
 
         case config.yazi yazi -yazi
-            set config_dir "~/.config/yazi"
+            set sub_dir yazi
 
         case '*'
-            echo "Error: Unknown shortcut '$argv"
+            echo "Error: Unknown shortcut '$argv'"
             echo "Available shortcuts: $shortcuts"
             return 1
     end
 
-    eval nvim "$config_dir"
+    # Combine them safely and open Neovim
+    nvim "$config_dir/$sub_dir"
 end

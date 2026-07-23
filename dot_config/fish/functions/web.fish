@@ -1,25 +1,19 @@
 function web --description 'Shortcuts to web url links'
+    # List of shortcuts for the help menu
+    set -l shortcuts "archwiki (-archw), hyprwiki (-hyprw), waybarwiki (-waybarw), github (-git), youtube (-yt)"
 
-    # Shortcuts
-    set -l shortcuts (string join ", " \
-      "-archw"\
-      "-hyprw"\
-      "-waybarw"\
-      "-git"\
-      "-yt")
-
-    # Trigger help display if no args or -h / --help is passed
-    if test (count $argv) -eq 0; or test "$argv" = -h
-        echo "Usage: neo [shortcut]"
+    # Trigger help display if no args, too many args, or help flags are passed
+    if test (count $argv) -eq 0; or test "$argv[1]" = -h; or test "$argv[1]" = --help
+        echo "Usage: web [shortcut]"
         echo "Available shortcuts: $shortcuts"
         return 0
     end
 
-    # Variable to hold our target URL
+    # Variable to hold target URL
     set -l url ""
 
-    # Check which shortcut user entered
-    switch $argv
+    # Check only the first argument entered
+    switch $argv[1]
         case archwiki -archw
             set url "https://wiki.archlinux.org"
 
@@ -36,18 +30,20 @@ function web --description 'Shortcuts to web url links'
             set url "https://youtube.com"
 
         case '*'
-            echo "Error: Unknown shortcut '$argv'"
-            echo "Available shortcuts: archwiki, hyprwiki, waybarwiki, github, youtube"
+            echo "Error: Unknown shortcut '$argv[1]'"
+            echo "Available shortcuts: $shortcuts"
             return 1
     end
 
-    # Ensure browser is immune to terminal termination
-    nohup xdg-open "$url" >/dev/null 2>&1 &
+    # Open browser detached from terminal
+    xdg-open "$url" >/dev/null 2>&1 &
+
+    # Safely detach the background job in Fish
     disown
 
-    # Buffer to open browser - Uncomment sleep and increase accordingly if browser is not opening 0.1 = 100ms
-    # sleep 0.2
+    # Small delay to let xdg-open hand off the process to the browser
+    sleep 0.1
 
-    # Kill the current kitty window
-    kill -9 $fish_pid
+    # Cleanly exit the terminal window
+    exit
 end
