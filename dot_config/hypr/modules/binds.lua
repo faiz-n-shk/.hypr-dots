@@ -55,6 +55,7 @@ hl.bind(shiftMod .. " + B", hl.dsp.exec_cmd(browser .. " --private-window"))
 ----------------------------
 
 -- Open clipboard menu
+-- hl.bind("SUPER + V", hl.dsp.exec_cmd("kitty --class clipse -e clipse", { float = true, size = {622, 652}, stay_focused = true }))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(clipboard))
 
 -- Quick Menu

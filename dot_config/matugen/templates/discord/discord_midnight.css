@@ -1,7 +1,15 @@
+/**
+ * @name midnight-matugen
+ * @description Full Midnight Discord theme dynamically updated via Matugen.
+ * @author refact0r & Kazan212
+ * @version 2.0.0
+*/
+
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 
 body {
 --top-bar-height: 10px;
+--small-user-panel: off;
 }
 
 /* customize things here */
@@ -13,7 +21,7 @@ body {
 	--corner-text: 'Midnight';
 
 	/* color of status indicators and window controls */
-    --online-indicator: {{colors.inverse_primary.default.hex}};     /* change to #23a55a for default green */
+  --online-indicator: {{colors.inverse_primary.default.hex}};     /* change to #23a55a for default green */
 	--dnd-indicator: {{colors.error.default.hex}};                  /* change to #f13f43 for default red */
 	--idle-indicator: {{colors.tertiary_container.default.hex}};    /* change to #f0b232 for default yellow */
 	--streaming-indicator: {{colors.on_primary.default.hex}};       /* change to #593695 for default purple */
@@ -24,7 +32,7 @@ body {
 	--accent-3: {{colors.primary.default.hex}};             /* accent buttons */
 	--accent-4: {{colors.surface_bright.default.hex}};      /* accent buttons when hovered */
 	--accent-5: {{colors.primary_fixed_dim.default.hex}};   /* accent buttons when clicked */
-    --accent-new: {{colors.inverse_primary.default.hex}};   /* user panel mute & deafen buttons */
+  --accent-new: {{colors.primary.default.hex}};   /* user panel mute & deafen buttons */
 	--mention:  {{colors.surface.default.hex}};             /* mentions & mention messages */
 	--mention-hover: {{colors.surface_bright.default.hex}}; /* mentions & mention messages when hovered */
 
@@ -64,11 +72,10 @@ body {
 	--roundness-xxs: 8px; /* searchbar, small elements */
 
 	/* direct messages moon icon */
-	/* change to block to show, none to hide */
-	--discord-icon: block; /* discord icon */
-	--moon-icon: none; /* moon icon */
-	--moon-icon-url: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg'); /* custom icon url */
-	--moon-icon-size: auto;
+	--discord-icon: block; 
+	--moon-icon: none; 
+	--moon-icon-mask: none !important; /* Forces the theme wrapper to stay hidden */
+
 
 	/* filter uncolorable elements to fit theme */
 	/* (just set to none, they're too much work to configure) */
@@ -89,24 +96,20 @@ body {
   fill: var(--text-0) !important;
 }
 
-/* Erase the Moon and Restore Default Discord Icon */
-[class*="homeIcon_"] {
-    display: block !important;
-}
-
-[class*="childWrapper_"] {
+/* Force original Discord Icon and wipe out theme Moon layers completely */
+[data-list-item-id="guildsnav___home"] [class^="childWrapper_"] {
     background-image: none !important;
     mask-image: none !important;
     -webkit-mask-image: none !important;
 }
 
-[class*="childWrapper_"]::before,
-[class*="childWrapper_"]::after {
+[data-list-item-id="guildsnav___home"] [class^="childWrapper_"]::before,
+[data-list-item-id="guildsnav___home"] [class^="childWrapper_"]::after {
     content: none !important;
     display: none !important;
 }
 
-[class*="childWrapper_"] svg {
+[data-list-item-id="guildsnav___home"] svg {
     display: block !important;
     opacity: 1 !important;
     transform: none !important;

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Start mpd and mpd-mpris
+systemctl --user start mpd.service
+systemctl --user start mpd-mpris.service
+
+# Launch rmpc
+rmpc
+
+# Stop mpd after closing rmpc
+rmpc control stop
+
+# Clean up and shut down the background processes
+systemctl --user stop mpd-mpris.service
+systemctl --user stop mpd.service
+

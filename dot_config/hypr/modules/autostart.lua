@@ -15,9 +15,6 @@ hl.on("hyprland.start", function()
 	-- Alt-Tab Daemon
 	hl.exec_cmd("snappy-switcher --daemon")
 
-	-- Mpd Services and Daemon
-	hl.exec_cmd("systemctl --user start mpd")
-
 	-- Start hyprpm plugins
 	hl.exec_cmd("hyprpm reload -n")
 

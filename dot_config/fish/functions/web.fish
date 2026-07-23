@@ -38,7 +38,7 @@ function web --description 'Shortcuts to web url links'
     end
 
     # Open browser detached from terminal
-    xdg-open "$url" >/dev/null 2>&1 &
+    nohup xdg-open "$url" </dev/null >/dev/null 2>&1 &
 
     # Safely detach the background job in Fish
     disown
