@@ -1,6 +1,6 @@
 function web --description 'Shortcuts to web url links'
     # List of shortcuts for the help menu
-    set -l shortcuts "archwiki (-archw), hyprwiki (-hyprw), waybarwiki (-waybarw), github (-git), youtube (-yt)"
+    set -l shortcuts "whatsapp (-wha), archwiki (-archw), hyprwiki (-hyprw), waybarwiki (-waybarw), github (-git), youtube (-yt)"
 
     # Trigger help display if no args, too many args, or help flags are passed
     if test (count $argv) -eq 0; or test "$argv[1]" = -h; or test "$argv[1]" = --help
@@ -29,6 +29,8 @@ function web --description 'Shortcuts to web url links'
         case youtube yt -yt
             set url "https://youtube.com"
 
+        case whatsapp what wha -what -wha
+            set url "https://web.whatsapp.com"
         case '*'
             echo "Error: Unknown shortcut '$argv[1]'"
             echo "Available shortcuts: $shortcuts"
