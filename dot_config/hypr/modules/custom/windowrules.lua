@@ -36,14 +36,6 @@ hl.layer_rule({
 	ignore_alpha = 0.5, -- Numeric value without quotes
 })
 
--- Target Sea of Thieves to use immediate rendering (tearing) to unlock FPS
-hl.window_rule({
-	match = {
-		class = "^steam_app_1172620$",
-	},
-	immediate = true,
-})
-
 hl.layer_rule({
 	match = { namespace = "rofi" },
 	blur = true,
@@ -60,14 +52,40 @@ hl.window_rule({
 	pin = true,
 })
 
--- CS2 Configuration: Correctly confines cursor using official native API
+-- CS2 Configuration
 hl.window_rule({
 	match = {
 		class = ".*cs2.*|.*steam_app_730.*",
 	},
 	fullscreen = true,
-	confine_pointer = true, -- Officially traps the hardware mouse pointer inside the viewport
-	opacity = 1.0, -- Set pure number, override flag handled natively or via opaque
+	confine_pointer = true,
+	opacity = 1.0,
+	no_dim = true,
+	no_blur = true,
+	opaque = true,
+})
+
+-- Sea Of Thieves Configuration
+hl.window_rule({
+	match = {
+		class = ".*sotgame.exe.*|.*steam_app_1172620.*",
+	},
+	fullscreen = true,
+	confine_pointer = true,
+	opacity = 1.0,
+	no_dim = true,
+	no_blur = true,
+	opaque = true,
+})
+
+-- Minecraft Configuration
+hl.window_rule({
+	match = {
+		class = ".*[Mm]inecraft.*",
+	},
+	fullscreen = true,
+	confine_pointer = true,
+	opacity = 1.0,
 	no_dim = true,
 	no_blur = true,
 	opaque = true,

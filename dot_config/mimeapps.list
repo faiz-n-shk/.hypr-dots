@@ -14,6 +14,7 @@ application/x-compressed-tar=org.gnome.FileRoller.desktop
 application/json=nvim.desktop
 image/jpeg=swayimg.desktop
 x-scheme-handler/discord=vesktop.desktop
+application/x-zerosize=nvim.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;
@@ -23,3 +24,4 @@ image/jpeg=swayimg.desktop;
 x-scheme-handler/http=zen.desktop;
 x-scheme-handler/https=zen.desktop;
 x-scheme-handler/chrome=zen.desktop;
+application/x-zerosize=nvim.desktop;

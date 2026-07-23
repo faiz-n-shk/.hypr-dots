@@ -82,7 +82,8 @@
   "clock":{
     "format": "{:%H:%M}",
     "tooltip": true,
-    "tooltip-format": "<big>{:%I:%M %p}</big>\n<tt>{calendar}</tt>"
+    "tooltip-format": "<big>{:%I:%M %p}</big>\n<tt>{calendar}</tt>",
+    "on-click-right": "/home/faizan/.config/hypr/scripts/taskbar-year-calendar"
   },
   "clock#right":{
     "format": "{:%a, %d/%m/%y}",
